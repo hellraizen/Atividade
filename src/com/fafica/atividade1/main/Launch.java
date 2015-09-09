@@ -4,6 +4,7 @@ import com.fafica.atividade.erros.FornecedorJaCadastradoException;
 import com.fafica.atividade.erros.FornecedorNaoEncontradoException;
 import com.fafica.atividade1.endereco.Endereco;
 import com.fafica.atividade1.fachada.Fachada;
+import com.fafica.atividade1.fornecedor.FilaFornecedor;
 import com.fafica.atividade1.fornecedor.Fornecedor;
 
 public class Launch {
@@ -22,45 +23,70 @@ public class Launch {
 		fornecedor1.setEndereco(endereco1);
 		fornecedor2.setEndereco(endereco2);
 		fornecedor3.setEndereco(endereco3);
-		try {
-			Fachada.getInstance().cadastrarFornecedor(fornecedor1);
-			Fachada.getInstance().cadastrarFornecedor(fornecedor2);
 
-			// **********************Mesmo CPF************************
-			Fachada.getInstance().cadastrarFornecedor(fornecedor3);
-			
-			
+		/*
+		 * try { Fachada.getInstance().cadastrarFornecedor(fornecedor1);
+		 * Fachada.getInstance().cadastrarFornecedor(fornecedor2);
+		 * 
+		 * // **********************Mesmo CPF************************
+		 * Fachada.getInstance().cadastrarFornecedor(fornecedor3);
+		 * 
+		 * 
+		 * 
+		 * //("**********************Buscar************************");
+		 * Fachada.getInstance().procurarFornecedor("22345678901");
+		 * 
+		 * //("************************Excluir***********************");
+		 * 
+		 * Fachada.getInstance().removerFornecedor("12345678900");
+		 * 
+		 * 
+		 * 
+		 * Fachada.getInstance().procurarFornecedor("12345678900");
+		 * 
+		 * } catch (FornecedorJaCadastradoException ex) {
+		 * System.err.println(ex.getMessage()); }catch
+		 * (FornecedorNaoEncontradoException e){
+		 * System.err.println(e.getMessage()); }
+		 * 
+		 * 
+		 * Fachada.getInstance().listarFornecedor();
+		 * 
+		 * //********************** atualizar**********************
+		 * 
+		 * Fornecedor fornecedor4 = new Fornecedor(1,"essecara", "22345678301",
+		 * "itau"); Endereco endereco4 = new Endereco("paris", "a1", "primeiro",
+		 * "unive", "caruaru", "55200001", fornecedor4);
+		 * fornecedor4.setEndereco(endereco4);
+		 * 
+		 * Fachada.getInstance().atualizarFornecedor(fornecedor1,fornecedor4);
+		 * 
+		 * Fachada.getInstance().listarFornecedor();
+		 * 
+		 */
 
-			//("**********************Buscar************************");
-			Fachada.getInstance().procurarFornecedor("22345678901");
+		FilaFornecedor fila = new FilaFornecedor();
 
-			//("************************Excluir***********************");
+		fila.add(fornecedor1);
+		fila.add(fornecedor2);
+		fila.add(fornecedor3);
 
-			Fachada.getInstance().removerFornecedor("12345678900");
+		System.out.println(fila.size());
 
-			
+		System.out.println(fila.peek());
 
-			Fachada.getInstance().procurarFornecedor("12345678900");
+		fila.pool();
+
+		System.out.println(fila.size());
+
+		System.out.println(fila.peek());
 		
-		} catch (FornecedorJaCadastradoException ex) {
-			System.err.println(ex.getMessage());
-		}catch (FornecedorNaoEncontradoException e){
-			System.err.println(e.getMessage());
-		}
-		
-		
-		Fachada.getInstance().listarFornecedor();
+		fila.pool();
 
-		//********************** atualizar**********************
-		
-		Fornecedor fornecedor4 = new Fornecedor(1,"essecara", "22345678301", "itau");
-		Endereco endereco4 = new Endereco("paris", "a1", "primeiro", "unive", "caruaru", "55200001", fornecedor4);
-		fornecedor4.setEndereco(endereco4);
-				
-		Fachada.getInstance().atualizarFornecedor(fornecedor1,fornecedor4);
-		
-		Fachada.getInstance().listarFornecedor();
+		System.out.println(fila.size());
+
+		System.out.println(fila.peek());
+
 	}
-	
 
 }
