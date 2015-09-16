@@ -2,8 +2,10 @@ package com.fafica.atividade1.fachada;
 
 import java.util.ArrayList;
 
+import com.fafica.atividade.erros.FornecedorCpfInvalidoException;
 import com.fafica.atividade.erros.FornecedorJaCadastradoException;
 import com.fafica.atividade.erros.FornecedorNaoEncontradoException;
+import com.fafica.atividade.erros.FornecedorNomeInvalidoException;
 import com.fafica.atividade1.endereco.ControladorEndereco;
 import com.fafica.atividade1.endereco.Endereco;
 import com.fafica.atividade1.fornecedor.ControladorFornecedor;
@@ -31,14 +33,14 @@ public class Fachada {
 		
 	    //area do fornecedor
 	    
-		public void cadastrarFornecedor(Fornecedor fornecedor) throws FornecedorJaCadastradoException {			
+		public void cadastrarFornecedor(Fornecedor fornecedor) throws FornecedorJaCadastradoException, FornecedorNomeInvalidoException, FornecedorCpfInvalidoException {			
 			controladorFornecedor.cadastrar(fornecedor);
 			controladorEndereco.cadastrar(fornecedor.getEndereco());
 		
 		}
 		
-		public void atualizarFornecedor(Fornecedor fornecedor,Fornecedor fornecedor1){
-			controladorFornecedor.atualizar(fornecedor,fornecedor1);
+		public void atualizarFornecedor(Fornecedor fornecedor) throws FornecedorNaoEncontradoException{
+			controladorFornecedor.atualizar(fornecedor);
 		}
 		public Boolean removerFornecedor(String cpf){
 			return controladorFornecedor.remover(cpf);

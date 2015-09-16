@@ -2,8 +2,10 @@ package com.fafica.atividade1.fornecedor;
 
 import java.util.ArrayList;
 
+import com.fafica.atividade.erros.FornecedorCpfInvalidoException;
 import com.fafica.atividade.erros.FornecedorJaCadastradoException;
 import com.fafica.atividade.erros.FornecedorNaoEncontradoException;
+import com.fafica.atividade.erros.FornecedorNomeInvalidoException;
 import com.fafica.atividade.util.ValidarCPF;
 import com.fafica.atividade.util.ValidarNome;
 
@@ -19,19 +21,18 @@ public class ControladorFornecedor {
 		
 	}
 	
-	public void cadastrar(Fornecedor fornecedor)throws FornecedorJaCadastradoException {
+	public void cadastrar(Fornecedor fornecedor)throws FornecedorJaCadastradoException, FornecedorNomeInvalidoException, FornecedorCpfInvalidoException {
 		if(!ValidarCPF.validaCPF(fornecedor.getCpf())){
-			System.out.println("Cpf invalido");
+			throw new FornecedorCpfInvalidoException();
 		}else if(!ValidarNome.validarNome(fornecedor.getNome())){
-			System.out.println("Nome deve conter mais de 4 caracteres");
+			throw new FornecedorNomeInvalidoException();
 		}else{
 		repositorioFornecedor.cadastrar(fornecedor);
 		}
 		
 	}
-	public void atualizar(Fornecedor fornecedor, Fornecedor fornecedor1){
-		repositorioFornecedor.atualizar(fornecedor,fornecedor1);
-	
+	public void atualizar(Fornecedor fornecedor) throws FornecedorNaoEncontradoException{
+		repositorioFornecedor.atualizar(fornecedor);
 	}
 	public Boolean remover(String cpf){
 		

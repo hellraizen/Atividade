@@ -20,11 +20,11 @@ public class ControladorEndereco {
 	}
 	public Boolean remover(Endereco endereco){
 		
-		return repositorioEndereco.remover(endereco);
+		return null;
 	}
 
 	public Endereco procurar (Endereco endereco){
-		return repositorioEndereco.procurar(endereco);	
+		return null;
 	}
 	public ArrayList<Endereco> listar(){
 		 return repositorioEndereco.listar();

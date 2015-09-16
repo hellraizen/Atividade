@@ -32,39 +32,26 @@ public class RepositorioEndereco implements IRepositorioEndereco {
 	}
 
 	@Override
-	public Boolean remover(Endereco endereco) {
-		for (int i = 0; i < enderecoArray.length; i++) {
-			Endereco obj = enderecoArray[i];
-			if (obj.getFornecedor()==endereco.getFornecedor()){
-				enderecoArray[i]=null;
-				
-				return true;
-		        }
+	public Boolean remover(Integer id) {
+		
+		        
 			
-			}
+			
 
-		return false;
+		return null;
 	}
 
 	@Override
-	public Endereco procurar(Endereco endereco) {
-		for (Endereco endereco1 : enderecoArray) {
-			if(endereco1.getFornecedor()==endereco.getFornecedor()){
-				return endereco1;
-			}
-		}
+	public Endereco procurar(Integer id) {
+
 		return null;
 		
 	}
 
 	@Override
-	public Boolean existe(Endereco endereco) {
-		for (Endereco endereco1 : enderecoArray) {
-			if(endereco1.getFornecedor()==endereco.getFornecedor()){
-				return true;
-			}
-		}
-		return false;
+	public Boolean existe(Integer id) {
+	
+		return null;
 	}
 
 	public ArrayList<Endereco> listar(){

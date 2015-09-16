@@ -28,18 +28,9 @@ public class RepositorioFornecedor implements IRepositorioFornecedor {
 	}
 
 	@Override
-	public void atualizar(Fornecedor fornecedor, Fornecedor fornecedor1) {
-		
-		for (int i = 0; i < index; i++) {
-			Fornecedor obj = fornecedorArray[i];
-			
-			if (obj==fornecedor) {
-				
-				fornecedorArray[i] = fornecedor1;
+	public void atualizar(Fornecedor fornecedor) {
 
-			}
-		}
-
+	
 	}
 
 	@Override
@@ -56,7 +47,7 @@ public class RepositorioFornecedor implements IRepositorioFornecedor {
 	}
 
 	@Override
-	public void procurar(String cpf) throws FornecedorNaoEncontradoException {
+	public Fornecedor procurar(String cpf) throws FornecedorNaoEncontradoException {
 		for (Fornecedor fornecedor : fornecedorArray) {
 			if (fornecedor != null) {
 
@@ -79,6 +70,7 @@ public class RepositorioFornecedor implements IRepositorioFornecedor {
 			}
 
 		}
+		return null;
 
 	}
 
