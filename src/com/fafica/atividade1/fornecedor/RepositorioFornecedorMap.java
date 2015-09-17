@@ -20,9 +20,13 @@ public class RepositorioFornecedorMap implements IRepositorioFornecedor {
 
 	@Override
 	public void cadastrar(Fornecedor fornecedor) throws FornecedorJaCadastradoException {
-		fornecedor.setCodigo(index);
-		mapFornecedor.put(index, fornecedor);
-		index++;
+		if (!existe(fornecedor.getCpf())) {
+			fornecedor.setCodigo(index);
+			mapFornecedor.put(index, fornecedor);
+			index++;
+		} else {
+			throw new FornecedorJaCadastradoException();
+		}
 
 	}
 
@@ -51,7 +55,7 @@ public class RepositorioFornecedorMap implements IRepositorioFornecedor {
 			Fornecedor fornecedor = mapFornecedor.get(i);
 			if (cpf.equals(fornecedor.getCpf())) {
 				return fornecedor;
-			}else{
+			} else {
 				throw new FornecedorNaoEncontradoException();
 			}
 		}
@@ -76,7 +80,7 @@ public class RepositorioFornecedorMap implements IRepositorioFornecedor {
 		for (int i = 1; i < mapFornecedor.size(); i++) {
 			Fornecedor fornecedor = mapFornecedor.get(i);
 			arrayListfornecedorLocal.add(fornecedor);
-			
+
 		}
 		return arrayListfornecedorLocal;
 	}

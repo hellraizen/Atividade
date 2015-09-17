@@ -18,8 +18,13 @@ public class RepositorioFornecedorSet implements IRepositorioFornecedor {
 
 	@Override
 	public void cadastrar(Fornecedor fornecedor) throws FornecedorJaCadastradoException {
-		fornecedor.setCodigo(index);
-		arraySetFornecedor.add(fornecedor);
+		if (!existe(fornecedor.getCpf())) {
+			fornecedor.setCodigo(index);
+			arraySetFornecedor.add(fornecedor);
+		}else{
+			throw new FornecedorJaCadastradoException();
+		}
+		
 	}
 
 	@Override
@@ -47,9 +52,9 @@ public class RepositorioFornecedorSet implements IRepositorioFornecedor {
 	@Override
 	public Fornecedor procurar(String cpf) throws FornecedorNaoEncontradoException {
 		for (Fornecedor fornecedor : arraySetFornecedor) {
-			if(cpf.equals(fornecedor.getCpf())){
+			if (cpf.equals(fornecedor.getCpf())) {
 				return fornecedor;
-			}else{
+			} else {
 				throw new FornecedorNaoEncontradoException();
 			}
 		}
@@ -60,7 +65,7 @@ public class RepositorioFornecedorSet implements IRepositorioFornecedor {
 	@Override
 	public Boolean existe(String cpf) {
 		for (Fornecedor fornecedor : arraySetFornecedor) {
-			if(cpf.equals(fornecedor.getCpf())){
+			if (cpf.equals(fornecedor.getCpf())) {
 				return true;
 			}
 		}
@@ -73,7 +78,7 @@ public class RepositorioFornecedorSet implements IRepositorioFornecedor {
 		for (Fornecedor fornecedor : arraySetFornecedor) {
 			arrayListfornecedorLocal.add(fornecedor);
 		}
-		
+
 		return arrayListfornecedorLocal;
 	}
 

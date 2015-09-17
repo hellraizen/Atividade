@@ -39,7 +39,7 @@ public class Fachada {
 		
 		}
 		
-		public void atualizarFornecedor(Fornecedor fornecedor) throws FornecedorNaoEncontradoException{
+		public void atualizarFornecedor(Fornecedor fornecedor) throws FornecedorNaoEncontradoException, FornecedorJaCadastradoException{
 			controladorFornecedor.atualizar(fornecedor);
 		}
 		public Boolean removerFornecedor(String cpf){

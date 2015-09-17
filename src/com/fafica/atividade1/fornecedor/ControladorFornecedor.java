@@ -16,7 +16,7 @@ public class ControladorFornecedor {
 	
 	public ControladorFornecedor (){
 		
-		this.repositorioFornecedor = new RepositorioFornecedor();
+		this.repositorioFornecedor = new RepositorioFornecedorList();
 		
 		
 	}
