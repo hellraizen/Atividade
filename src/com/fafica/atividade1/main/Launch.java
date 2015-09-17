@@ -1,5 +1,6 @@
 package com.fafica.atividade1.main;
 
+import com.fafica.atividade.erros.EnderecoJaCadastradoException;
 import com.fafica.atividade.erros.FornecedorCpfInvalidoException;
 import com.fafica.atividade.erros.FornecedorJaCadastradoException;
 import com.fafica.atividade.erros.FornecedorNaoEncontradoException;
@@ -41,7 +42,7 @@ public class Launch {
 			// Fachada.getInstance().atualizarFornecedor(fornecedor4);
 
 		} catch (FornecedorJaCadastradoException | FornecedorNomeInvalidoException | FornecedorCpfInvalidoException
-				| FornecedorNaoEncontradoException e) {
+				| FornecedorNaoEncontradoException | EnderecoJaCadastradoException e) {
 
 			e.printStackTrace();
 		}
